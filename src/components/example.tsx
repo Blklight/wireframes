@@ -4,6 +4,7 @@ import {
   Calculator,
   Calendar,
   CreditCard,
+  Edit,
   EllipsisVertical,
   GalleryVerticalEnd,
   LogIn,
@@ -40,13 +41,26 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { LoginForm } from "./login-form";
+import { useStore } from "@/store/use-store";
+import { useRouter } from "next/navigation";
+import { DropdownButton } from "./ui/dropdown-button";
+import { SplitDropdownButton } from "./ui/split-dropdown-button";
 
 export const Example = () => {
+  const routeLogin = useStore((state: any) => state.routeLogin);
+  const router = useRouter();
+
   const user = {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   };
+  const fileOptions = [
+    { label: "New File", value: "new-file" },
+    { label: "Open...", value: "open" },
+    { label: "Save", value: "save" },
+    { label: "Save As...", value: "save-as" },
+  ];
   const [open, setOpen] = React.useState(false);
   const [openSheet, setOpenSheet] = React.useState(false);
 
@@ -61,6 +75,14 @@ export const Example = () => {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  const handleLogin = (data: boolean) => {
+    if (data) {
+      router.push("/login");
+    } else {
+      setOpenSheet(true);
+    }
+  };
 
   return (
     <SidebarProvider>
@@ -148,12 +170,18 @@ export const Example = () => {
             </div>
 
             <div className="flex gap-2 items-center">
+              <SplitDropdownButton
+                label="File"
+                icon={<Edit className="h-4 w-4" />}
+                options={fileOptions}
+                variant="secondary"
+              />
               <ModeToggle />
               <NavUser user={user} />
               <Button
                 variant={"secondary"}
                 size={"icon"}
-                onClick={() => setOpenSheet(true)}
+                onClick={() => handleLogin(routeLogin)}
               >
                 <LogIn className="w-4 h-4" />
               </Button>
