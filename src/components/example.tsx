@@ -4,7 +4,9 @@ import {
   Calculator,
   Calendar,
   CreditCard,
+  EllipsisVertical,
   GalleryVerticalEnd,
+  LogIn,
   Plus,
   Settings,
   Smile,
@@ -29,6 +31,16 @@ import {
 import { cn } from "@/lib/utils";
 import { Skeleton } from "./ui/skeleton";
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { LoginForm } from "./login-form";
+
 export const Example = () => {
   const user = {
     name: "shadcn",
@@ -36,6 +48,7 @@ export const Example = () => {
     avatar: "/avatars/shadcn.jpg",
   };
   const [open, setOpen] = React.useState(false);
+  const [openSheet, setOpenSheet] = React.useState(false);
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -52,7 +65,7 @@ export const Example = () => {
   return (
     <SidebarProvider>
       <div className="w-full flex flex-row min-h-svh">
-        <div className="flex flex-col gap-4 items-center py-4 px-2.5">
+        <div className="flex flex-col h-svh sticky top-0 gap-4 items-center py-5 px-2.5">
           <Button size={"icon"}>
             <Image
               src="/blklight-light.svg"
@@ -73,6 +86,9 @@ export const Example = () => {
           </Button>
           <Button variant={"secondary"} size={"icon"}>
             <Plus className="w-4 h-4" />
+          </Button>
+          <Button variant={"secondary"} size={"icon"} className="mt-auto">
+            <EllipsisVertical className="w-4 h-4" />
           </Button>
         </div>
         <div className="bg-slate-50 dark:bg-slate-950 shadow rounded-lg border flex-1 my-2.5 mr-2.5">
@@ -134,6 +150,13 @@ export const Example = () => {
             <div className="flex gap-2 items-center">
               <ModeToggle />
               <NavUser user={user} />
+              <Button
+                variant={"secondary"}
+                size={"icon"}
+                onClick={() => setOpenSheet(true)}
+              >
+                <LogIn className="w-4 h-4" />
+              </Button>
             </div>
           </div>
           <div className="px-2.5 py-2">
@@ -152,6 +175,17 @@ export const Example = () => {
           </div>
         </div>
       </div>
+      <Sheet open={openSheet} onOpenChange={setOpenSheet}>
+        {/* <SheetTrigger>Open</SheetTrigger> */}
+        <SheetContent className="w-[400px] sm:w-[500px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-32px)] xl:max-w-[800px] p-8 m-2.5 overflow-y-auto border rounded-md">
+          {/* <SheetHeader>
+            <SheetTitle>Are you absolutely sure?</SheetTitle>
+          </SheetHeader> */}
+          <LoginForm>
+            <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
+          </LoginForm>
+        </SheetContent>
+      </Sheet>
     </SidebarProvider>
   );
 };
