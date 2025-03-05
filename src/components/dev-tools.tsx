@@ -32,10 +32,11 @@ const FormSchema = z.object({
 
 export const DevTools = () => {
   const { setRouteLogin } = useStore() as any;
+  const defaultRouteLogin = useStore((state: any) => state.routeLogin);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      routeLogin: false,
+      routeLogin: defaultRouteLogin,
     },
   });
 

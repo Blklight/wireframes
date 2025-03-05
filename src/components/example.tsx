@@ -46,6 +46,8 @@ import { useRouter } from "next/navigation";
 import { DropdownButton } from "./ui/dropdown-button";
 import { SplitDropdownButton } from "./ui/split-dropdown-button";
 import { SearchCommand } from "./search-command";
+import { LoginFormDrawer } from "./login-form-drawer";
+import { AnimatePresence, motion } from "motion/react";
 
 export const Example = () => {
   const routeLogin = useStore((state: any) => state.routeLogin);
@@ -102,15 +104,12 @@ export const Example = () => {
           </Button>
         </div>
         <div className="bg-slate-50 dark:bg-slate-950 shadow rounded-lg border flex-1 my-2.5 mr-2.5">
-          <div className="flex justify-between items-center px-2.5 py-2">
-            {/* <div className="">
-              
-            </div> */}
+          <div className="flex justify-between items-center p-4">
             <SearchCommand />
 
             <div className="flex gap-2 items-center">
               <SplitDropdownButton
-                label="File"
+                iconOnly
                 icon={<Edit className="h-4 w-4" />}
                 options={fileOptions}
                 variant="secondary"
@@ -126,7 +125,7 @@ export const Example = () => {
               </Button>
             </div>
           </div>
-          <div className="px-2.5 py-2">
+          <div className="mt-2 px-4">
             <Skeleton className="w-full h-96 !bg-dark-100 dark:!bg-muted mb-4" />
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
               <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
@@ -144,13 +143,13 @@ export const Example = () => {
       </div>
       <Sheet open={openSheet} onOpenChange={setOpenSheet}>
         {/* <SheetTrigger>Open</SheetTrigger> */}
-        <SheetContent className="w-[400px] sm:w-[500px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-32px)] xl:max-w-[800px] p-8 m-2.5 overflow-y-auto border rounded-md">
+        <SheetContent className="w-[400px] sm:w-[500px] sm:max-w-[500px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-32px)] xl:max-w-[500px] p-8 m-2.5 overflow-y-auto border rounded-md">
           {/* <SheetHeader>
             <SheetTitle>Are you absolutely sure?</SheetTitle>
           </SheetHeader> */}
-          <LoginForm>
+          <LoginFormDrawer>
             <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-          </LoginForm>
+          </LoginFormDrawer>
         </SheetContent>
       </Sheet>
     </SidebarProvider>

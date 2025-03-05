@@ -42,13 +42,13 @@ export const SearchCommand = () => {
       <Button
         variant={"outline"}
         className={cn(
-          "relative min-h-8 w-full justify-start items-center rounded-sm bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-96 lg:max-w-[500px] cursor-pointer"
+          "relative min-h-8 w-full justify-start items-center rounded-lg bg-background text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-96 lg:max-w-[500px] cursor-pointer"
         )}
         onClick={() => setOpen(true)}
       >
         <span className="hidden lg:inline-flex">Pesquisar...</span>
         <span className="inline-flex lg:hidden">Pesquisar...</span>
-        <kbd className="pointer-events-none absolute right-[0.4rem] top-[0.4rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="pointer-events-none absolute right-[0.4rem] top-[0.45rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>

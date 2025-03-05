@@ -4,10 +4,24 @@ import { Home, Monitor, RotateCw, Smartphone, Tablet } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
+import { cn } from "@/lib/utils";
 
-export const Frame = ({ children }: { children: React.ReactNode }) => {
+export const Frame = ({
+  text,
+  className,
+  children,
+}: {
+  text?: string;
+  className?: string;
+  children: React.ReactNode;
+}) => {
   return (
-    <section className="border rounded-xl w-full shadow-md overflow-hidden ">
+    <section
+      className={cn(
+        "border rounded-xl w-full shadow-md overflow-hidden ",
+        className
+      )}
+    >
       <div className="w-full h-14 bg-slate-100 dark:bg-slate-900 rounded-t-xl flex items-center gap-2 px-2">
         <Button variant={"secondary"} size={"icon"} className="px-2">
           {/* <RotateCw className="w-5 h-5" /> */}
@@ -15,10 +29,10 @@ export const Frame = ({ children }: { children: React.ReactNode }) => {
         </Button>
         <Input
           disabled
-          defaultValue={"/Página inicial"}
+          defaultValue={text}
           className="!bg-white !text-black dark:!bg-black dark:!text-white !opacity-100"
         />
-        <div className="">
+        {/* <div className="">
           <ToggleGroup
             type="single"
             size={"sm"}
@@ -47,7 +61,7 @@ export const Frame = ({ children }: { children: React.ReactNode }) => {
               <Smartphone className="h-4 w-4" />
             </ToggleGroupItem>
           </ToggleGroup>
-        </div>
+        </div> */}
       </div>
       <div className="w-full px-2 pb-2 min-h-svh overflow-y-auto scroll-smooth">
         {children}

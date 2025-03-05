@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import { DevTools } from "@/components/dev-tools";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +18,7 @@ const geistMono = Geist_Mono({
 
 const inter = Inter({
   variable: "--font-inter",
+  display: "swap",
   subsets: ["latin"],
 });
 
@@ -32,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -43,6 +47,7 @@ export default function RootLayout({
           {children}
 
           {/* </div> */}
+          <Toaster />
           <DevTools />
         </ThemeProvider>
       </body>
