@@ -17,11 +17,9 @@ export default function Home() {
         <div className="bg-slate-50 dark:bg-slate-950 shadow rounded-lg border flex-1 my-2.5 mr-2.5">
           <NavToolbar />
           <div className="mt-2 mb-5 px-4">
-            <Image
+            <img
               src={"/example-img.jpg"}
               alt="Image"
-              width={1200}
-              height={1200}
               className="w-full h-96 object-cover !bg-dark-100 dark:!bg-muted mb-4 rounded-lg grayscale"
             />
 

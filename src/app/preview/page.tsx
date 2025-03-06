@@ -91,11 +91,9 @@ export default function Preview() {
               <div className="">
                 <Frame text="Preview" className="mb-6">
                   <div className="space-y-5 px-5 py-5">
-                    <Image
+                    <img
                       src={tutorial.image}
                       alt={tutorial.title}
-                      width={500}
-                      height={500}
                       className="w-full h-64 object-cover rounded-xl grayscale"
                     />
                     <h2 className="text-3xl font-bold">{tutorial.title}</h2>

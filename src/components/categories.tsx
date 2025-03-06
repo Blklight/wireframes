@@ -31,7 +31,7 @@ export const Categoring = () => {
             </div>
 
             <ComponentMultipleSelector />
-            <DrawerClose>
+            <DrawerClose asChild>
               <Button variant="outline">Cancel</Button>
             </DrawerClose>
           </div>
