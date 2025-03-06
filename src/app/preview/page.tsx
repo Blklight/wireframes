@@ -13,9 +13,17 @@ import { Categoring } from "@/components/categories";
 import { Styling } from "@/components/styling";
 import { Scheduler } from "@/components/scheduler";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
+import { Globe, Route } from "lucide-react";
+import { SelectPathsDialog } from "@/components/select-path";
+import { learningPaths } from "@/components/dev-tools";
+import type { Article } from "@/lib/types";
 
 export default function Preview() {
+  const [isSelectPathsOpen, setIsSelectPathsOpen] = React.useState(false);
+  const [currentArticle, setCurrentArticle] = React.useState<Article | null>(
+    null
+  );
+
   const tutorial = {
     id: 1,
     title: "Criando um Componente no React",
@@ -76,6 +84,19 @@ export default function Preview() {
                     <div className="flex items-center gap-4 mt-4">
                       <Categoring />
                       <Styling />
+                      <Button
+                        variant={"outline"}
+                        onClick={() => setIsSelectPathsOpen(true)}
+                      >
+                        <Route className="mr-2 size-4" />
+                        Adicionar a trilha de aprendizado
+                      </Button>
+                      <SelectPathsDialog
+                        open={isSelectPathsOpen}
+                        onOpenChange={setIsSelectPathsOpen}
+                        paths={learningPaths}
+                        article={currentArticle}
+                      />
                     </div>
 
                     <div className="flex items-center gap-4 mt-5 ml-auto">

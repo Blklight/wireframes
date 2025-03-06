@@ -32,6 +32,39 @@ export const user = {
   avatar: "/ultimate-mercer-logo.jpg",
 };
 
+export const learningPaths = [
+  {
+    id: "1",
+    name: "Desenvolvimento Frontend",
+    description:
+      "Aprenda as tecnologias essenciais para desenvolvimento frontend",
+    articles: [
+      {
+        id: "1",
+        title: "Introdução ao React",
+        url: "https://example.com/react-intro",
+        description: "Um guia completo para iniciantes em React",
+        imageUrl: "/placeholder.svg?height=100&width=200",
+        addedAt: new Date().toISOString(),
+      },
+      {
+        id: "2",
+        title: "CSS Grid Layout",
+        url: "https://example.com/css-grid",
+        description: "Dominando layouts com CSS Grid",
+        imageUrl: "/placeholder.svg?height=100&width=200",
+        addedAt: new Date().toISOString(),
+      },
+    ],
+  },
+  {
+    id: "2",
+    name: "Desenvolvimento Backend",
+    description: "Recursos para aprender desenvolvimento backend",
+    articles: [],
+  },
+];
+
 const FormSchema = z.object({
   routeLogin: z.boolean().default(false),
   isLogged: z.boolean().default(false),
