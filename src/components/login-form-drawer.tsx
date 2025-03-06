@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/form";
 import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
 import { Button } from "./ui/button";
+import { useStore } from "@/store/use-store";
+import { user } from "./dev-tools";
 
 export const loginSchema = z.object({
   login: z.string().min(2).max(50),
@@ -22,25 +24,26 @@ export const loginSchema = z.object({
 
 export const LoginFormDrawer = ({
   children,
+  shouldOpenSheet,
 }: {
   children?: React.ReactNode;
+  shouldOpenSheet: (value: boolean) => void;
 }) => {
+  const { setUser, setIsLogged } = useStore() as any;
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      login: "",
-      password: "",
+      login: "UltimateMercer",
+      password: "12345678",
     },
   });
 
+  const closeSheet = () => shouldOpenSheet(false);
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
-    // signIn("credentials", {
-    //   login: values.login,
-    //   password: values.password,
-    // });
+    setUser(user);
+    setIsLogged(true);
+    closeSheet();
   }
 
   return (
@@ -72,7 +75,7 @@ export const LoginFormDrawer = ({
               <FormItem className="mb-2">
                 <FormLabel>Senha</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <Input type="password" placeholder="********" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

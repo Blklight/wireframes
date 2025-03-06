@@ -48,6 +48,8 @@ import { SplitDropdownButton } from "./ui/split-dropdown-button";
 import { SearchCommand } from "./search-command";
 import { LoginFormDrawer } from "./login-form-drawer";
 import { AnimatePresence, motion } from "motion/react";
+import { NavToolbar } from "./nav-toolbar";
+import { BackgroundCard, cardData } from "./styling";
 
 export const Example = () => {
   const routeLogin = useStore((state: any) => state.routeLogin);
@@ -104,54 +106,35 @@ export const Example = () => {
           </Button>
         </div>
         <div className="bg-slate-50 dark:bg-slate-950 shadow rounded-lg border flex-1 my-2.5 mr-2.5">
-          <div className="flex justify-between items-center p-4">
-            <SearchCommand />
+          <NavToolbar />
+          <div className="mt-2 mb-5 px-4">
+            <Image
+              src={"/example-img.jpg"}
+              alt="Image"
+              width={1200}
+              height={1200}
+              className="w-full h-96 object-cover !bg-dark-100 dark:!bg-muted mb-4 rounded-lg grayscale"
+            />
 
-            <div className="flex gap-2 items-center">
-              <SplitDropdownButton
-                iconOnly
-                icon={<Edit className="h-4 w-4" />}
-                options={fileOptions}
-                variant="secondary"
-              />
-              <ModeToggle />
-              <NavUser user={user} />
-              <Button
-                variant={"secondary"}
-                size={"icon"}
-                onClick={() => handleLogin(routeLogin)}
-              >
-                <LogIn className="w-4 h-4" />
-              </Button>
+            <div>
+              <h3 className="text-3xl font-bold mb-2">Tutoriais</h3>
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <BackgroundCard data={cardData} />
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="mt-2 px-4">
-            <Skeleton className="w-full h-96 !bg-dark-100 dark:!bg-muted mb-4" />
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-              <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
+            <div className="">
+              <Skeleton className="w-80 h-10 !bg-dark-100 dark:!bg-muted mb-4" />
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
+                <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
+                <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
+                <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <Sheet open={openSheet} onOpenChange={setOpenSheet}>
-        {/* <SheetTrigger>Open</SheetTrigger> */}
-        <SheetContent className="w-[400px] sm:w-[500px] sm:max-w-[500px] max-w-[calc(100vw-32px)] max-h-[calc(100vh-32px)] xl:max-w-[500px] p-8 m-2.5 overflow-y-auto border rounded-md">
-          {/* <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-          </SheetHeader> */}
-          <LoginFormDrawer>
-            <Skeleton className="w-full h-48 !bg-dark-100 dark:!bg-muted" />
-          </LoginFormDrawer>
-        </SheetContent>
-      </Sheet>
     </SidebarProvider>
   );
 };

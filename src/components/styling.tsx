@@ -27,6 +27,7 @@ import {
   Share2,
   BarChart,
   Palette,
+  Router,
 } from "lucide-react";
 
 import {
@@ -39,6 +40,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation";
+
 // Definindo a interface para os dados do card
 interface CardData {
   id: number;
@@ -50,7 +53,7 @@ interface CardData {
 }
 
 // Dados de exemplo baseados no objeto fornecido
-const cardData: CardData = {
+export const cardData: CardData = {
   id: 1,
   title: "Criando um Componente no React",
   description: "Aprenda a criar um componente funcional no React com hooks.",
@@ -96,7 +99,7 @@ export default function CardSelector() {
   );
 }
 
-function BasicCard({ data }: { data: CardData }) {
+export function BasicCard({ data }: { data: CardData }) {
   return (
     <Card className="w-full">
       <CardHeader>
@@ -134,7 +137,7 @@ function BasicCard({ data }: { data: CardData }) {
   );
 }
 
-function SocialCard({ data }: { data: CardData }) {
+export function SocialCard({ data }: { data: CardData }) {
   return (
     <Card className="w-full overflow-hidden py-4 gap-4">
       <CardHeader className="pb-0">
@@ -191,11 +194,12 @@ function SocialCard({ data }: { data: CardData }) {
   );
 }
 
-function BackgroundCard({ data }: { data: CardData }) {
+export function BackgroundCard({ data }: { data: CardData }) {
+  const router = useRouter();
   return (
-    <Card className="w-full overflow-hidden relative h-[450px] group">
+    <Card className="w-full overflow-hidden relative h-[400px] group">
       <div
-        className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-500 group-hover:scale-110"
+        className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-500 group-hover:scale-110 grayscale"
         style={{
           backgroundImage: `url("${data.image}")`,
         }}
@@ -241,7 +245,9 @@ function BackgroundCard({ data }: { data: CardData }) {
         </CardContent>
 
         <CardFooter>
-          <Button className="w-full">Ler Artigo</Button>
+          <Button className="w-full" onClick={() => router.push("/tutorial")}>
+            Ler Artigo
+          </Button>
         </CardFooter>
       </div>
     </Card>

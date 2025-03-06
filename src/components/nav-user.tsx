@@ -27,6 +27,14 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Button } from "./ui/button";
+import {
+  Books,
+  Info,
+  PencilSimpleLine,
+  Question,
+  UserCircle,
+  Wrench,
+} from "@phosphor-icons/react";
 
 export function NavUser({
   user,
@@ -44,28 +52,10 @@ export function NavUser({
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              size={"icon"}
-              variant={"secondary"}
-              className="cursor-pointer"
-            >
-              <User className="size-4" />
-            </Button>
-            {/* <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton> */}
+            <Avatar className="h-10 w-10 rounded-lg cursor-pointer">
+              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+            </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
@@ -88,22 +78,34 @@ export function NavUser({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <BadgeCheck />
-                Account
+                <UserCircle className="size-5" />
+                Perfil
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <CreditCard />
-                Billing
+                <Books className="size-5" />
+                Biblioteca
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Bell />
-                Notifications
+                <PencilSimpleLine className="size-5" />
+                Meus rascunhos
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Wrench className="size-5" />
+                Configurações
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Question className="size-5" />
+                Ajuda
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Info className="size-5" />
+                Sobre
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <LogOut />
-              Log out
+              <LogOut className="size-5" />
+              Logout
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

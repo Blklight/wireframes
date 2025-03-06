@@ -31,20 +31,6 @@ import { NavToolbar } from "@/components/nav-toolbar";
 import { IconSidebar } from "@/components/icon-sidebar";
 
 export default function Tools() {
-  const routeLogin = useStore((state: any) => state.routeLogin);
-  const router = useRouter();
-
-  const user = {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  };
-  const fileOptions = [
-    { label: "New File", value: "new-file" },
-    { label: "Open...", value: "open" },
-    { label: "Save", value: "save" },
-    { label: "Save As...", value: "save-as" },
-  ];
   const tools = [
     {
       title: "Criar artigo",
@@ -59,14 +45,7 @@ export default function Tools() {
       icon: RocketLaunch,
     },
   ];
-  const [openSheet, setOpenSheet] = React.useState(false);
-  const handleLogin = (data: boolean) => {
-    if (data) {
-      router.push("/login");
-    } else {
-      setOpenSheet(true);
-    }
-  };
+
   return (
     <SidebarProvider>
       <div className="w-full flex flex-row min-h-svh">
@@ -99,7 +78,7 @@ export default function Tools() {
                       </ul>
                     </div>
 
-                    <Link href="/editor" className="ml-auto hover:underline">
+                    <Link href="/create" className="ml-auto hover:underline">
                       {tool.title}
                     </Link>
                     <tool.icon className="size-56 absolute inset-0 m-auto opacity-5" />

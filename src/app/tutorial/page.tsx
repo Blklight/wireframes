@@ -58,7 +58,7 @@ export default function Tutorial() {
                       alt={tutorial.title}
                       width={500}
                       height={500}
-                      className="w-full h-64 object-cover rounded-xl"
+                      className="w-full h-64 object-cover rounded-xl grayscale"
                     />
                     <h2 className="text-3xl font-bold">{tutorial.title}</h2>
                     <p className="text-muted-foreground">
