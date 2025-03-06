@@ -17,6 +17,9 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import Link from "next/link";
 import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
+import { useStore } from "@/store/use-store";
+import { user } from "./dev-tools";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -25,12 +28,15 @@ const formSchema = z.object({
 });
 
 export function NewAccount() {
+  const { setUser, setIsLogged } = useStore() as any;
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      email: "",
-      password: "",
+      username: "UltimateMercer",
+      email: "ultimate@mercer.com",
+      password: "12345678",
     },
   });
 
@@ -38,6 +44,9 @@ export function NewAccount() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    setUser(user);
+    setIsLogged(true);
+    router.push("/");
   }
 
   return (
@@ -88,7 +97,7 @@ export function NewAccount() {
               <FormItem className="mb-2.5">
                 <FormLabel>Senha</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <Input type="password" placeholder="********" {...field} />
                 </FormControl>
                 <FormDescription>Esta é sua senha secreta.</FormDescription>
                 <FormMessage />

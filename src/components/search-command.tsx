@@ -58,34 +58,13 @@ export const SearchCommand = () => {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem>
-              <Calendar />
-              <span>Calendar</span>
+              <span>Projetos</span>
             </CommandItem>
             <CommandItem>
-              <Smile />
-              <span>Search Emoji</span>
+              <span>Tutoriais</span>
             </CommandItem>
             <CommandItem>
-              <Calculator />
-              <span>Calculator</span>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
+              <span>Artigos</span>
             </CommandItem>
           </CommandGroup>
         </CommandList>

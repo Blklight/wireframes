@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/form";
 import { GithubLogo, GoogleLogo } from "@phosphor-icons/react";
 import { Button } from "./ui/button";
+import { useStore } from "@/store/use-store";
+import { user } from "./dev-tools";
+import { useRouter } from "next/navigation";
 
 export const loginSchema = z.object({
   login: z.string().min(2).max(50),
@@ -21,11 +24,14 @@ export const loginSchema = z.object({
 });
 
 export const LoginForm = ({ children }: { children?: React.ReactNode }) => {
+  const { setUser, setIsLogged } = useStore() as any;
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      login: "",
-      password: "",
+      login: "UltimateMercer",
+      password: "12345678",
     },
   });
 
@@ -33,10 +39,9 @@ export const LoginForm = ({ children }: { children?: React.ReactNode }) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
-    // signIn("credentials", {
-    //   login: values.login,
-    //   password: values.password,
-    // });
+    setUser(user);
+    setIsLogged(true);
+    router.push("/");
   }
 
   return (
@@ -68,7 +73,7 @@ export const LoginForm = ({ children }: { children?: React.ReactNode }) => {
               <FormItem className="mb-2">
                 <FormLabel>Senha</FormLabel>
                 <FormControl>
-                  <Input placeholder="********" {...field} />
+                  <Input type="password" placeholder="********" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
