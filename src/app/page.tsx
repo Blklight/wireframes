@@ -24,21 +24,21 @@ export default function Home() {
             />
 
             <div>
-              <h3 className="text-3xl font-bold mb-2">Tutoriais</h3>
+              <h3 className="text-3xl font-bold mb-2">Mais recentes</h3>
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
-                {Array.from({ length: 3 }).map((_, index) => (
+                {Array.from({ length: 9 }).map((_, index) => (
                   <BackgroundCard key={index} data={cardData} />
                 ))}
               </div>
             </div>
-            <div className="">
+            {/* <div className="">
               <Skeleton className="w-80 h-10 !bg-dark-100 dark:!bg-muted mb-4" />
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mb-4">
                 <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
                 <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
                 <Skeleton className="w-full h-72 !bg-dark-100 dark:!bg-muted" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
