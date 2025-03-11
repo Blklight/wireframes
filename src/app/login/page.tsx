@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <div className="w-full flex flex-row h-svh">
       <div className="relative bg-slate-50 dark:bg-slate-950 shadow rounded-lg border flex flex-1 gap-4 my-5 mx-5">
-        <div className="absolute top-8 right-8 flex gap-2">
+        {/* <div className="absolute top-8 right-8 flex gap-2">
           {isLogin ? (
             <Button variant={"ghost"} onClick={() => setIsLogin(false)}>
               Criar conta
@@ -26,9 +26,21 @@ export default function Login() {
           )}
 
           <ModeToggle />
-        </div>
-        <Skeleton className="grow m-8 hidden lg:block" />
-        <div className="flex flex-col flex-1 m-8 justify-center space-y-6 lg:p-8">
+        </div> */}
+
+        <div className="flex flex-col flex-1 relative m-8 justify-center space-y-6 lg:p-8">
+          <div className="absolute top-8 left-8 flex gap-2">
+            <ModeToggle />
+            {isLogin ? (
+              <Button variant={"ghost"} onClick={() => setIsLogin(false)}>
+                Criar conta
+              </Button>
+            ) : (
+              <Button variant={"ghost"} onClick={() => setIsLogin(true)}>
+                Login
+              </Button>
+            )}
+          </div>
           <AnimatePresence mode="wait">
             <motion.div
               key={isLogin ? "login" : "register"}
@@ -41,6 +53,20 @@ export default function Login() {
             </motion.div>
           </AnimatePresence>
         </div>
+        <Skeleton className="grow m-8 hidden lg:block" />
+        {/* <div className="flex flex-col flex-1 m-8 justify-center space-y-6 lg:p-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={isLogin ? "login" : "register"}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isLogin ? <LoginForm /> : <NewAccount />}
+            </motion.div>
+          </AnimatePresence>
+        </div> */}
       </div>
     </div>
   );
